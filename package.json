@@ -1,7 +1,11 @@
 {
   "name": "get-text-nodes",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "dist/index.min.js",
+  "unpkg": "dist/index.min.js",
+  "jsdelivr": "dist/index.min.js",
+  "module": "dist/index.min.mjs",
+  "browser": "dist/index.min.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
