@@ -1,2 +1,0 @@
-var e=3;function r(r){return r.nodeType===e}var t=/^\s*$/;var n=Array.prototype.push;export default function e(o){var a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},i=a.ignoreWhiteSpace,d=void 0===i||i,u=a.deep,v=void 0===u||u;if(r(o))return d&&function(e){return t.test(e.nodeValue)}(o)?[]:[o];for(var p=[],f=0,l=o.childNodes,c=void 0===l?[]:l,h=c.length;f<h;f++){var s=c[f];(v||r(s))&&n.apply(p,e(s,a))}return p}
-//# sourceMappingURL=index.min.mjs.map
