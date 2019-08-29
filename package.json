@@ -6,6 +6,9 @@
   "jsdelivr": "dist/index.min.js",
   "module": "dist/index.min.mjs",
   "browser": "dist/index.min.js",
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
