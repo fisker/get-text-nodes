@@ -16,7 +16,7 @@ function getTextNodes(node, options = {}) {
 
   const textNodes = []
   let index = 0
-  const {childNodes = []} = node
+  const {childNodes} = node
   const {length} = childNodes
 
   for (; index < length; index++) {
