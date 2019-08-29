@@ -3,7 +3,7 @@ import isWhiteSpaceNode from './is-white-space-node'
 
 const {push} = Array.prototype
 
-function getTextNodes(node, options) {
+function getTextNodes(node, options = {}) {
   const {ignoreWhiteSpace = true, deep = true} = options
 
   if (isTextNode(node)) {

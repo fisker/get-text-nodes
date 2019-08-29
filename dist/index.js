@@ -22,7 +22,9 @@
 
   var push = Array.prototype.push
 
-  function getTextNodes(node, options) {
+  function getTextNodes(node) {
+    var options =
+      arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {}
     var _options$ignoreWhiteS = options.ignoreWhiteSpace,
       ignoreWhiteSpace =
         _options$ignoreWhiteS === void 0 ? true : _options$ignoreWhiteS,
