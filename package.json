@@ -1,0 +1,86 @@
+{
+  "name": "get-text-nodes",
+  "version": "0.0.0",
+  "main": "index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "license": "MIT",
+  "description": "get child text nodes",
+  "homepage": "https://github.com/fisker/get-text-nodes#readme",
+  "repository": "fisker/get-text-nodes",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5",
+    "@commitlint/cli": "8.1.0",
+    "@fisker/commitlint-config": "1.1.2",
+    "@fisker/eslint-config": "1.2.14",
+    "@fisker/eslint-config-ava": "1.2.3",
+    "@fisker/husky-config": "1.1.1",
+    "@fisker/lint-staged-config": "1.0.5",
+    "@fisker/prettier-config": "1.0.18",
+    "ava": "2.3.0",
+    "cz-conventional-changelog": "3.0.2",
+    "dedent": "0.7.0",
+    "eslint": "6.2.2",
+    "husky": "3.0.4",
+    "jsdom": "15.1.1",
+    "lint-staged": "9.2.5",
+    "markdownlint-cli": "0.18.0",
+    "npm-run-all": "4.1.5",
+    "nyc": "14.1.1",
+    "prettier": "1.18.2",
+    "rimraf": "3.0.0",
+    "rollup": "1.20.3",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-filesize": "6.2.0",
+    "rollup-plugin-prettier": "0.6.0",
+    "rollup-plugin-terser": "5.1.1"
+  },
+  "scripts": {
+    "build": "run-p build:*",
+    "build:js": "rollup --config",
+    "clean": "rimraf dist",
+    "dist": "run-p dist:*",
+    "dist:npm": "np --yolo --no-yarn",
+    "format": "run-p format:*",
+    "format:eslint": "yarn lint:eslint --fix",
+    "format:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --write",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint \"**/*.{js,mjs,vue}\"",
+    "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/node_modules/**\"",
+    "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
+    "test": "ava",
+    "test-coverage": "nyc ava",
+    "release": "run-s clean build test dist"
+  },
+  "author": {
+    "name": "fisker Cheung",
+    "email": "lionkay@gmail.com",
+    "url": "https://www.fiskercheung.com/"
+  },
+  "sideEffects": false,
+  "nyc": {
+    "require": "esm",
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "include": [
+      "src/**"
+    ]
+  },
+  "ava": {
+    "verbose": true,
+    "require": "esm",
+    "helpers": [
+      "test/helpers/**"
+    ]
+  }
+}
