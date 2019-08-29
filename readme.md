@@ -32,7 +32,6 @@ lib/
 
 `UMD` build exports a global function `getTextNodes`
 
-
 ## API
 
 ### getTextNodes(node, options?)
