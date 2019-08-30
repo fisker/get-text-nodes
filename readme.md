@@ -48,8 +48,16 @@ getTextNodes(document.body)
 - `NodeList`, `Node`, `Array` or any `arrayLike`
 
 ```js
+// Node
 getTextNodes(document.body)
+
+// HTMLCollection
 getTextNodes(document.getElementsByTagName('*'))
+
+// NodeList
+getTextNodes(document.querySelectorAll('*'))
+
+// Array
 getTextNodes([...document.getElementsByTagName('*')])
 ```
 

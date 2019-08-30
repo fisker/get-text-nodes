@@ -32,26 +32,43 @@ test('main', t => {
 test('nodeList', t => {
   const list = [
     {
-      type: window.Node,
-      list: document.body
+      constructor: window.Node,
+      list: document.body,
     },
     {
-      type: window.HTMLCollection,
-      list: document.getElementsByTagName('*')
+      constructor: firstTextNode.constructor,
+      list: firstTextNode,
     },
     {
-      type: window.NodeList,
-      list: document.querySelectorAll('*')
+      constructor: window.HTMLCollection,
+      list: document.getElementsByTagName('*'),
     },
     {
-      type: Array,
-      list: [...document.getElementsByTagName('*')]
+      constructor: window.NodeList,
+      list: document.querySelectorAll('*'),
+    },
+    {
+      constructor: Array,
+      list: [...document.getElementsByTagName('*')],
+    },
+    {
+      tag: 'Arguments',
+      list: (function() {
+        return arguments
+      })(...document.getElementsByTagName('*')),
     },
   ]
 
-  for (const {type, list} of list) {
-    t.true(list instanceof type)
-    t.true(getTextNodes(list).includes(firstTextNode), `should accept ${type.name}`)
+  for (const {constructor, tag, list} of list) {
+    if (constructor) {
+      t.true(list instanceof constructor)
+    } else if (tag) {
+      t.is(Object.prototype.toString.call(list), `[object ${tag}]`)
+    }
+    t.true(
+      getTextNodes(list).includes(firstTextNode),
+      `should accept ${constructor ? constructor.name : tag}`
+    )
   }
 })
 
