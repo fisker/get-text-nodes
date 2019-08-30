@@ -3,27 +3,41 @@ import isWhiteSpaceNode from './is-white-space-node'
 
 const {push} = Array.prototype
 
-function getTextNodes(node, options = {}) {
+function getTextNodes(nodeList, options = {}) {
   const {ignoreWhiteSpace = true, deep = true} = options
 
-  if (isTextNode(node)) {
-    if (!ignoreWhiteSpace || !isWhiteSpaceNode(node)) {
-      return [node]
+  if (isTextNode(nodeList)) {
+    if (!ignoreWhiteSpace || !isWhiteSpaceNode(nodeList)) {
+      return [nodeList]
     }
 
     return []
   }
 
   const textNodes = []
-  let index = 0
-  const {childNodes} = node
-  const {length} = childNodes
 
-  for (; index < length; index++) {
-    const child = childNodes[index]
+  // Node
+  const {childNodes} = nodeList
+  if (childNodes) {
+    const {length} = childNodes
 
-    if (deep || isTextNode(child)) {
-      push.apply(textNodes, getTextNodes(child, options))
+    for (let index = 0; index < length; index++) {
+      const child = childNodes[index]
+
+      if (deep || isTextNode(child)) {
+        push.apply(textNodes, getTextNodes(child, options))
+      }
+    }
+  }
+
+  // NodeList or any arrayLike
+  const {length} = nodeList
+
+  if (length) {
+    for (let index = 0; index < length; index++) {
+      const node = nodeList[index]
+
+      push.apply(textNodes, getTextNodes(node, options))
     }
   }
 

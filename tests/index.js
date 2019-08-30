@@ -23,11 +23,53 @@ const {window} = new JSDOM(dedent`
 `)
 
 const {document} = window
+const firstTextNode = getTextNodes(document.body)[0]
 
 test('main', t => {
-  const firstTextNode = getTextNodes(document.body)[0]
   t.true(Array.isArray(getTextNodes(document.body)), 'should return array')
-  t.is(getTextNodes(firstTextNode)[0], firstTextNode, 'should accept textNode')
+})
+
+test('nodeList', t => {
+  const list = [
+    {
+      constructor: window.Node,
+      list: document.body,
+    },
+    {
+      constructor: firstTextNode.constructor,
+      list: firstTextNode,
+    },
+    {
+      constructor: window.HTMLCollection,
+      list: document.getElementsByTagName('*'),
+    },
+    {
+      constructor: window.NodeList,
+      list: document.querySelectorAll('*'),
+    },
+    {
+      constructor: Array,
+      list: [...document.getElementsByTagName('*')],
+    },
+    {
+      tag: 'Arguments',
+      list: (function() {
+        return arguments
+      })(...document.getElementsByTagName('*')),
+    },
+  ]
+
+  for (const {constructor, tag, list} of list) {
+    if (constructor) {
+      t.true(list instanceof constructor)
+    } else if (tag) {
+      t.is(Object.prototype.toString.call(list), `[object ${tag}]`)
+    }
+    t.true(
+      getTextNodes(list).includes(firstTextNode),
+      `should accept ${constructor ? constructor.name : tag}`
+    )
+  }
 })
 
 test('options.deep', t => {
