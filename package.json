@@ -1,6 +1,6 @@
 {
   "name": "get-text-nodes",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.min.js",
   "unpkg": "dist/index.min.js",
   "jsdelivr": "dist/index.min.js",
