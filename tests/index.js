@@ -23,11 +23,36 @@ const {window} = new JSDOM(dedent`
 `)
 
 const {document} = window
+const firstTextNode = getTextNodes(document.body)[0]
 
 test('main', t => {
-  const firstTextNode = getTextNodes(document.body)[0]
   t.true(Array.isArray(getTextNodes(document.body)), 'should return array')
-  t.is(getTextNodes(firstTextNode)[0], firstTextNode, 'should accept textNode')
+})
+
+test('nodeList', t => {
+  const list = [
+    {
+      type: window.Node,
+      list: document.body
+    },
+    {
+      type: window.HTMLCollection,
+      list: document.getElementsByTagName('*')
+    },
+    {
+      type: window.NodeList,
+      list: document.querySelectorAll('*')
+    },
+    {
+      type: Array,
+      list: [...document.getElementsByTagName('*')]
+    },
+  ]
+
+  for (const {type, list} of list) {
+    t.true(list instanceof type)
+    t.true(getTextNodes(list).includes(firstTextNode), `should accept ${type.name}`)
+  }
 })
 
 test('options.deep', t => {

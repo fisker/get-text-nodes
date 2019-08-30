@@ -34,13 +34,23 @@ lib/
 
 ## API
 
-### getTextNodes(node, options?)
+### getTextNodes(nodeList, options?)
 
-get child text nodes from `node`
+get child text nodes from `nodeList`
 
 ```js
 getTextNodes(document.body)
 // -> [text, text, ...]
+```
+
+#### nodeList
+
+- `NodeList`, `Node`, `Array` or any `arrayLike`
+
+```js
+getTextNodes(document.body)
+getTextNodes(document.getElementsByTagName('*'))
+getTextNodes([...document.getElementsByTagName('*')])
 ```
 
 #### options.ignoreWhiteSpace
