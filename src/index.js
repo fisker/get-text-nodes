@@ -19,10 +19,9 @@ function getTextNodes(nodeList, options = {}) {
   // Node
   const {childNodes} = nodeList
   if (childNodes) {
-    let index = 0
     const {length} = childNodes
 
-    for (; index < length; index++) {
+    for (let index = 0; index < length; index++) {
       const child = childNodes[index]
 
       if (deep || isTextNode(child)) {
@@ -35,9 +34,7 @@ function getTextNodes(nodeList, options = {}) {
   const {length} = nodeList
 
   if (length) {
-    let index = 0
-
-    for (; index < length; index++) {
+    for (let index = 0; index < length; index++) {
       const node = nodeList[index]
 
       push.apply(textNodes, getTextNodes(node, options))
