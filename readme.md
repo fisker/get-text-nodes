@@ -11,7 +11,7 @@ yarn add get-text-nodes
 ## Files
 
 ```text
-lib/
+dist/
 ├─ index.js         ( UMD )
 ├─ index.min.js     ( UMD, compressed )
 ├─ index.mjs        ( ES Module )
