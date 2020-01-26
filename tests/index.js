@@ -30,7 +30,7 @@ test('main', t => {
 })
 
 test('nodeList', t => {
-  const list = [
+  const cases = [
     {
       constructor: window.Node,
       list: document.body,
@@ -59,7 +59,7 @@ test('nodeList', t => {
     },
   ]
 
-  for (const {constructor, tag, list} of list) {
+  for (const {constructor, tag, list} of cases) {
     if (constructor) {
       t.true(list instanceof constructor)
     } else if (tag) {
