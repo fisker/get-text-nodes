@@ -3,7 +3,11 @@
   "version": "1.0.4",
   "description": "get child text nodes",
   "homepage": "https://github.com/fisker/get-text-nodes#readme",
+  "bugs": {
+    "url": "https://github.com/fisker/get-text-nodes/issues"
+  },
   "repository": "fisker/get-text-nodes",
+  "funding": "https://github.com/fisker/get-text-nodes?sponsor=1",
   "license": "MIT",
   "author": {
     "name": "fisker Cheung",
