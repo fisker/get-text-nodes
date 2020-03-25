@@ -25,11 +25,11 @@ const {window} = new JSDOM(dedent`
 const {document} = window
 const firstTextNode = getTextNodes(document.body)[0]
 
-test('main', t => {
+test('main', (t) => {
   t.true(Array.isArray(getTextNodes(document.body)), 'should return array')
 })
 
-test('nodeList', t => {
+test('nodeList', (t) => {
   const cases = [
     {
       constructor: window.Node,
@@ -53,7 +53,7 @@ test('nodeList', t => {
     },
     {
       tag: 'Arguments',
-      list: (function() {
+      list: (function () {
         return arguments
       })(...document.getElementsByTagName('*')),
     },
@@ -72,7 +72,7 @@ test('nodeList', t => {
   }
 })
 
-test('options.deep', t => {
+test('options.deep', (t) => {
   const nodes = getTextNodes(document.getElementById('js-has-child'))
   const nodes2 = getTextNodes(document.getElementById('js-has-child'), {
     deep: true,
@@ -84,16 +84,16 @@ test('options.deep', t => {
   t.deepEqual(nodes, nodes2, 'options.deep should be default true')
   t.true(nodes2.length > nodes3.length)
   t.true(
-    nodes2.some(node => node.nodeValue.trim() === 'textNode3'),
+    nodes2.some((node) => node.nodeValue.trim() === 'textNode3'),
     'should include child node text nodes'
   )
   t.true(
-    nodes3.every(node => node.nodeValue.trim() !== 'textNode3'),
+    nodes3.every((node) => node.nodeValue.trim() !== 'textNode3'),
     'should not include child node text nodes'
   )
 })
 
-test('options.ignoreWhiteSpace', t => {
+test('options.ignoreWhiteSpace', (t) => {
   const nodes = getTextNodes(document.body)
   const nodes2 = getTextNodes(document.body, {ignoreWhiteSpace: false})
   const nodes3 = getTextNodes(document.body, {ignoreWhiteSpace: true})
@@ -101,11 +101,11 @@ test('options.ignoreWhiteSpace', t => {
   t.deepEqual(nodes, nodes3, 'options.ignoreWhiteSpace should be default false')
   t.true(nodes2.length > nodes3.length)
   t.true(
-    nodes.every(node => node.nodeValue.trim() !== ''),
+    nodes.every((node) => node.nodeValue.trim() !== ''),
     'should has empty node'
   )
   t.true(
-    nodes2.some(node => node.nodeValue.trim() === ''),
+    nodes2.some((node) => node.nodeValue.trim() === ''),
     'should not has empty node'
   )
 })
