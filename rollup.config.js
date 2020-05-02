@@ -4,7 +4,7 @@ import filesize from 'rollup-plugin-filesize'
 import {terser} from 'rollup-plugin-terser'
 import prettier from 'prettier'
 
-const prettierConfig = prettier.resolveConfig.sync(`src/index.js`)
+const prettierConfig = prettier.resolveConfig.sync('src/index.js')
 
 const commonPlugins = [babel(), filesize()]
 
