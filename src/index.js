@@ -1,5 +1,5 @@
-import isTextNode from './is-text-node'
-import isWhiteSpaceNode from './is-white-space-node'
+import isTextNode from './is-text-node.js'
+import isWhiteSpaceNode from './is-white-space-node.js'
 
 const {push} = Array.prototype
 
