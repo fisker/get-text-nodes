@@ -67,7 +67,7 @@ test('nodeList', (t) => {
     }
     t.true(
       getTextNodes(list).includes(firstTextNode),
-      `should accept ${constructor ? constructor.name : tag}`
+      `should accept ${constructor ? constructor.name : tag}`,
     )
   }
 })
@@ -85,11 +85,11 @@ test('options.deep', (t) => {
   t.true(nodes2.length > nodes3.length)
   t.true(
     nodes2.some((node) => node.nodeValue.trim() === 'textNode3'),
-    'should include child node text nodes'
+    'should include child node text nodes',
   )
   t.true(
     nodes3.every((node) => node.nodeValue.trim() !== 'textNode3'),
-    'should not include child node text nodes'
+    'should not include child node text nodes',
   )
 })
 
@@ -102,10 +102,10 @@ test('options.ignoreWhiteSpace', (t) => {
   t.true(nodes2.length > nodes3.length)
   t.true(
     nodes.every((node) => node.nodeValue.trim() !== ''),
-    'should has empty node'
+    'should has empty node',
   )
   t.true(
     nodes2.some((node) => node.nodeValue.trim() === ''),
-    'should not has empty node'
+    'should not has empty node',
   )
 })
