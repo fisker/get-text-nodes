@@ -1,7 +1,7 @@
 import test from 'ava'
 import {JSDOM} from 'jsdom'
 import dedent from 'dedent'
-import getTextNodes from '../src'
+import getTextNodes from '../src/index.js'
 
 const {window} = new JSDOM(dedent`
   <!DOCTYPE html>
